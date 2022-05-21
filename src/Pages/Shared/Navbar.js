@@ -13,7 +13,6 @@ const NavBar = () => {
 
     const navItems = <>
         <li className='mx-2'><NavLink to='/'>Home</NavLink></li>
-        <li className='mx-2'><NavLink to='/appointment'>Appointment</NavLink></li>
         <li className='mx-2'><NavLink to='/reviews'>Reviews</NavLink></li>
         <li className='mx-2'><NavLink to='/contact'>Contact</NavLink></li>
         <li className='mx-2'><NavLink to='/about'>About</NavLink></li>
@@ -37,10 +36,9 @@ const NavBar = () => {
                     </label>
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li className='mb-2'><NavLink to='/'>Home</NavLink></li>
-                        <li className='mb-1'><NavLink to='/appointment'>Appointment</NavLink></li>
                         <li className='mb-1'><NavLink to='/reviews'>Reviews</NavLink></li>
-                        <li className='mb-1'><NavLink to='/contact'>Contact</NavLink></li>
-                        <li className='mb-1'><NavLink to='/about'>About</NavLink></li>
+                        <li className='mb-1'><NavLink to='/contact'>My Profile</NavLink></li>
+                        <li className='mb-1'><NavLink to='/about'>Blogs</NavLink></li>
                         {
                             user && <li><Link to="/dashboard">Dashboard</Link></li>
                         }
