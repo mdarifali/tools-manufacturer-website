@@ -12,19 +12,19 @@ const NavBar = () => {
     };
 
     const navItems = <>
-        <li className='mx-2'><NavLink to='/'>Home</NavLink></li>
-        <li className='mx-2'><NavLink to='/reviews'>Reviews</NavLink></li>
-        <li className='mx-2'><NavLink to='/contact'>Contact</NavLink></li>
-        <li className='mx-2'><NavLink to='/about'>About</NavLink></li>
-        {
-            user && <li><Link to="/dashboard">Dashboard</Link></li>
-        }
-        <li className='mx-3'>
-            {
-                user ? <button onClick={logout} className='btn btn-outline text-red-400'>Sing Out</button> :
-                    <NavLink to='/login'>Login</NavLink>
-            }
-        </li>
+        <li className='mb-2'><NavLink to='/'>Home</NavLink></li>
+                        <li className='mb-1'><NavLink to='/reviews'>Reviews</NavLink></li>
+                        <li className='mb-1'><NavLink to='/profile'>My Profile</NavLink></li>
+                        <li className='mb-1'><NavLink to='/blogs'>Blogs</NavLink></li>
+                        {
+                            user && <li><Link to="/dashboard">Dashboard</Link></li>
+                        }
+                        <li className='my-3'>
+                            {
+                                user ? <button onClick={logout} className='btn btn-outline text-red-400'>Sing Out</button> :
+                                    <NavLink to='/login'>Login</NavLink>
+                            }
+                        </li>
     </>
 
     return (
@@ -37,8 +37,8 @@ const NavBar = () => {
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li className='mb-2'><NavLink to='/'>Home</NavLink></li>
                         <li className='mb-1'><NavLink to='/reviews'>Reviews</NavLink></li>
-                        <li className='mb-1'><NavLink to='/contact'>My Profile</NavLink></li>
-                        <li className='mb-1'><NavLink to='/about'>Blogs</NavLink></li>
+                        <li className='mb-1'><NavLink to='/profile'>My Profile</NavLink></li>
+                        <li className='mb-1'><NavLink to='/blogs'>Blogs</NavLink></li>
                         {
                             user && <li><Link to="/dashboard">Dashboard</Link></li>
                         }
@@ -50,7 +50,7 @@ const NavBar = () => {
                         </li>
                     </ul>
                 </div>
-                <Link to='/home' className="btn btn-ghost normal-case text-xl">Doctors Portal</Link>
+                <Link to='/home' className="btn btn-ghost normal-case text-xl">Car Parts</Link>
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
