@@ -28,6 +28,10 @@ function App() {
           <RequireAuth>
             <Dashboard />
           </RequireAuth>} />
+        <Route path='/purchase' element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>} />
         <Route path='/reviews' element={<Reviews />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/profile' element={<MyProfile />} />
