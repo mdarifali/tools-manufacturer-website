@@ -15,10 +15,17 @@ const NavBar = () => {
         <li><Link className="" to='/'>Home</Link></li>
         <li><Link className="" to='/reviews'>Reviews</Link></li>
         <li><Link className="" to='/profile'>My Profile</Link></li>
-        <li><Link className="" to='/blogs'>Blogs</Link></li>
+        {
+            user && <li><Link to="/orders">Orders</Link></li>
+        }
+        {
+            user && <li><Link to="/purchase">Purchase</Link></li>
+        }
         {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }
+        <li><Link className="" to='/Portfolio'>My Portfolio</Link></li>
+        <li><Link className="" to='/blogs'>Blogs</Link></li>
         <li className='my-3'>
             {
                 user ? <button onClick={logout} className='btn btn-outline text-red-400'>Sing Out</button> :

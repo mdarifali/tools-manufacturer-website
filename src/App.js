@@ -12,10 +12,12 @@ import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import Navbar from './Pages/Shared/Navbar';
 import Singup from './Pages/SingUp/Singup';
 import Reviews from './Reviews/Reviews';
+import Purchase from './Pages/Purchase/Purchase';
+import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 
 function App() {
   return (
-    <div>
+    <div className='max-w-screen-2xl m-auto'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -30,11 +32,12 @@ function App() {
           </RequireAuth>} />
         <Route path='/purchase' element={
           <RequireAuth>
-            <Dashboard />
+            <Purchase />
           </RequireAuth>} />
         <Route path='/reviews' element={<Reviews />} />
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/profile' element={<MyProfile />} />
+        <Route path='/Portfolio' element={<MyPortfolio />} />
         <Route path='/login' element={<Login />} />
         <Route path='/singup' element={<Singup />} />
         <Route path='/resetpass' element={<ResetPassword />} />
