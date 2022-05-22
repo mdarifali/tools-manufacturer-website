@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../FirebaseAuth';
-import Loading from '../Shared/Loading';
+import Loading from '../../Pages/Shared/Loading';
 import { toast } from 'react-toastify';
 
 const SocialLogin = () => {
@@ -29,9 +29,13 @@ const SocialLogin = () => {
         <div>
             <button
                 onClick={() => signInWithGoogle()}
-                className="btn btn-outline btn-accent text-white my-3 w-full max-w-xs">
+                className="btn btn-outline btn-primary text-white my-3 w-full max-w-xs">
                 CONTINUE WITH GOOGLE
             </button>
+            {/* <button
+                className="btn btn-outline btn-primary text-white my-3 w-full max-w-xs">
+                CONTINUE WITH FACEBOOK
+            </button> */}
         </div>
     );
 };

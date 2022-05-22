@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../FirebaseAuth';
-import Loading from '../Shared/Loading';
+import Loading from '../../Pages/Shared/Loading';
 import { toast } from 'react-toastify';
 import SocialLogin from './SocialLogin';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -47,8 +47,8 @@ const Login = () => {
 
     return (
         <section>
-            <div className="hero min-h-screen">
-                <div className="hero-content text-center shadow-2xl rounded-2xl">
+            <div className="hero min-h-screen mt-5">
+                <div className="hero-content text-center shadow-2xl rounded-2xl border border-primary">
                     <div className="max-w-md">
                         <h1 className="text-3xl font-bold">Login</h1>
                         <form onSubmit={handleSubmit(handleLogin)} className='mt-8 '>
@@ -56,7 +56,7 @@ const Login = () => {
                                 <input
                                     type="email"
                                     placeholder="Email Address"
-                                    className="input input-bordered input-accent"
+                                    className="input input-bordered input-success"
                                     {...register("email", {
                                         required: {
                                             value: true,
@@ -79,7 +79,7 @@ const Login = () => {
                                 <input
                                     type="password"
                                     placeholder="Password"
-                                    className="input input-bordered input-accent w-96"
+                                    className="input input-bordered input-success w-96"
                                     {...register("password", {
                                         required: {
                                             value: true,
@@ -100,7 +100,7 @@ const Login = () => {
                                 <div className='text-sm text-left'>
                                     <Link to='/resetpass'><p>Forgot Password?</p></Link>
                                 </div>
-                                <button type='submit' className="btn btn-accent text-white my-5 ">Login</button>
+                                <button type='submit' className="btn btn-secondary text-white my-5 ">Login</button>
                                 <div className='text-sm text-center'>
                                     <Link to='/singup'>
                                         <p>New to Doctors Portal? <span className='text-primary font-bold'>Create new account</span></p>

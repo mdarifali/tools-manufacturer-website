@@ -5,7 +5,7 @@ import Carousel from './Carousel';
 
 const Home = () => {
     return (
-        <div>
+        <div className='my-10'>
            <Carousel />
            <BusinessSummary />
            <Footer />
