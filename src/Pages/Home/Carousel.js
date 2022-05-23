@@ -8,12 +8,12 @@ const Carousel = () => {
         <div>
             <div class="carousel w-full">
                 <div id="slide1" class="carousel-item relative w-full flex-col">
-                    <div className='absolute transform -translate-y-1/2 left-40 top-1/2'>
+                    {/* <div className='absolute transform -translate-y-1/2 left-40 top-1/2'>
                         <span class="mb-5 text-4xl font-bold bg-yellow-300 p-1">30% OFF</span>
                         <p class="text-5xl font-bold my-3">When Buying Parts</p>
                         <p className='text-5xl font-bold mb-4'>With Installation</p>
                         <button class="btn btn-secondary">Shop Now</button>
-                    </div>
+                    </div> */}
                     <img src={slide1} className="w-full" alt='#' />
                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide4" class="btn btn-circle">❮</a>

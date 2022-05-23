@@ -5,17 +5,19 @@ const Products = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('products.json')
+        const url = `http://localhost:5000/products`;
+        fetch(url)
         .then(res => res.json())
         .then(data => setProducts(data));
     }, [])
 
     return (
         <div className='my-10 px-12'>
-            <h1 className='text-4xl text-center'>Our Products {products.length}</h1>
-            <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10 p-4'>
+            <p className='text-5xl text-center font-bold'>Our Products {products.length}</p>
+            <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 p-4'>
                 {
-                    products.map(product => <ProductCard 
+                    products.map(product => <ProductCard
+                        key= {product._id}
                         product = {product}
                     />)
                 }

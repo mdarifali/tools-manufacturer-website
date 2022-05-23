@@ -14,14 +14,19 @@ import Singup from './Pages/SingUp/Singup';
 import Reviews from './Reviews/Reviews';
 import Purchase from './Pages/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
+import ProductDetails from './Pages/ProductDetails.js/ProductDetails';
 
 function App() {
   return (
-    <div className='max-w-screen-2xl m-auto'>
+    <div className='max-w-screen-2xl m-auto bg-base-100;'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
+        <Route path='ProductDetails/:id' element={
+          <RequireAuth>
+            <ProductDetails />
+          </RequireAuth>} />
         <Route path='/orders' element={
           <RequireAuth>
             <MyOrders />
