@@ -6,19 +6,19 @@ import Blogs from './Pages/Blogs/Blogs';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
-import MyOrders from './Pages/MyOrders/MyOrders';
-import MyProfile from './Pages/MyProfile/MyProfile';
+import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
+import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
 import ResetPassword from './Pages/ResetPassword/ResetPassword';
 import Navbar from './Pages/Shared/Navbar';
 import Singup from './Pages/SingUp/Singup';
-import Reviews from './Reviews/Reviews';
 import Purchase from './Pages/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import ProductDetails from './Pages/ProductDetails.js/ProductDetails';
+import AddReviews from './Pages/Dashboard/AddReviews/AddReviews';
 
 function App() {
   return (
-    <div className='max-w-screen-2xl m-auto bg-base-300;'>
+    <div>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -27,23 +27,19 @@ function App() {
           <RequireAuth>
             <ProductDetails />
           </RequireAuth>} />
-        <Route path='/orders' element={
-          <RequireAuth>
-            <MyOrders />
-          </RequireAuth>} />
-        <Route path='/dashboard' element={
-          <RequireAuth>
-            <Dashboard />
-          </RequireAuth>} />
         <Route path='/purchase' element={
           <RequireAuth>
             <Purchase />
           </RequireAuth>} />
-        <Route path='/profile' element={
+        <Route path='dashboard' element={
           <RequireAuth>
-            <MyProfile />
-          </RequireAuth>} />
-        <Route path='/reviews' element={<Reviews />} />
+            <Dashboard />
+          </RequireAuth>
+        }>
+          <Route index element={<MyOrders />} />
+          <Route path='addreview' element={<AddReviews />} />
+          <Route path='myprofile' element={<MyProfile />} />
+        </Route>
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/Portfolio' element={<MyPortfolio />} />
         <Route path='/login' element={<Login />} />

@@ -14,17 +14,14 @@ const NavBar = () => {
     const navItems = <>
 
         <li><Link class="active" to='/'>Home</Link></li>
-        <li class="hover-bordered"><Link to='/reviews'>Reviews</Link></li>
         <li class="hover-bordered"><Link to='/blogs'>Blogs</Link></li>
         <li class="hover-bordered"><Link to='/Portfolio'>My Portfolio</Link></li>
 
         {
             user ?
                 <>
-                    <li class="hover-bordered"><Link to="/dashboard">Dashboard</Link></li>
-                    <li class="hover-bordered"><Link to="/orders">Orders</Link></li>
                     <li class="hover-bordered"><Link to="/purchase">Purchase</Link></li>
-                    <li class="hover-bordered"><Link to='/profile'>My Profile</Link></li>
+                    <li class="hover-bordered"><Link to="/dashboard">Dashboard</Link></li>
                     <li>
                         <button onClick={logout} className='btn btn-outline btn-warning'>Sing Out</button>
                     </li>
@@ -34,7 +31,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div class="navbar bg-base-200">
+        <div class="navbar bg-base-100 fixed top-0 z-50">
             <div class="navbar-start">
                 <div class="dropdown">
                     <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -46,7 +43,7 @@ const NavBar = () => {
                 </div>
                 <Link to='/home' class="btn btn-ghost normal-case text-xl">daisyUI</Link>
             </div>
-            <div class="navbar-center hidden lg:flex">
+            <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal p-1 gap-1">
                     {navItems}
                 </ul>

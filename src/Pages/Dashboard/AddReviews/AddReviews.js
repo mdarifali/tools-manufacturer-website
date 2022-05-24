@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Reviews = () => {
+const AddReviews = () => {
     return (
         <div>
-            Reviews
+            AddReviews
         </div>
     );
 };
 
-export default Reviews;
+export default AddReviews;

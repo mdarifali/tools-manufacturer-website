@@ -3,7 +3,7 @@ import React from 'react';
 const ContactUs = () => {
     return (
         <div>
-            <div class="hero bg-base-200 my-5">
+            <div class="hero bg-base-200 my-10">
                 <div class="hero-content">
                     <div className='card p-10'>
                         <h2 className='text-4xl font-bold text-center mb-3' >Contact Us</h2>
@@ -16,7 +16,7 @@ const ContactUs = () => {
                                 <input type="text" placeholder="Subject" className="input input-bordered" />
                             </div>
                             <div className="form-control">
-                                <textarea className="textarea" rows="10" cols="100" placeholder="Your message"></textarea>
+                                <textarea className="textarea" rows="10" cols="50" placeholder="Your message"></textarea>
                             </div>
                             <div class="card-actions justify-center my-5">
                                 <button class="btn btn-wide btn-primary">SUBMIT</button>

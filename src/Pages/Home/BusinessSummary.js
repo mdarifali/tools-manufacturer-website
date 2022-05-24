@@ -6,7 +6,7 @@ import handshake from '../../assets/icons/handshake-deal-svgrepo-com.svg';
 
 const BusinessSummary = () => {
     return (
-        <div class="card shadow-xl my-10">
+        <div class="card my-10 bg-base-200">
             <div class="card-body">
                 <h2 class="text-center text-4xl font-bold uppercase my-5">Successes Of Bussiness</h2>
                 <p className='text-center'>We are providing lots of product, customer good reviews and customer service</p>

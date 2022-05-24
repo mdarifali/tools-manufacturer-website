@@ -12,8 +12,8 @@ const Home = () => {
         <div className=''>
             <Banner />
             <Products />
-            <BusinessSummary />
             <Review />
+            <BusinessSummary />
             <Carousel />
             <ContactUs />
             <Footer />
