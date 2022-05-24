@@ -4,15 +4,30 @@ import banner from '../../assets/images/Banner.jpg';
 
 const carousel = () => {
     return (
-        <div class="hero min-h-screen" style={{ background: `url(${banner})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-            <div class="hero-overlay bg-opacity-80"></div>
-            <div class="hero-content text-center text-neutral-content">
-                <div class="max-w-md">
-                    <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
-                    <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn btn-primary">Get Started</button>
-                </div>
+        <div className='card shadow-lg p-10'>
+            <div class="carousel rounded-box">
+            <div class="carousel-item">
+                <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=8B7BCDC2" alt="Burger" />
             </div>
+            <div class="carousel-item">
+                <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=500B67FB" alt="Burger" />
+            </div>
+            <div class="carousel-item">
+                <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=A89D0DE6" alt="Burger" />
+            </div>
+            <div class="carousel-item">
+                <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=225E6693" alt="Burger" />
+            </div>
+            <div class="carousel-item">
+                <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=9D9539E7" alt="Burger" />
+            </div>
+            <div class="carousel-item">
+                <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=BDC01094" alt="Burger" />
+            </div>
+            <div class="carousel-item">
+                <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=7F5AE56A" alt="Burger" />
+            </div>
+        </div>
         </div>
     );
 };
