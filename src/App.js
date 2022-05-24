@@ -18,7 +18,7 @@ import ProductDetails from './Pages/ProductDetails.js/ProductDetails';
 
 function App() {
   return (
-    <div className='max-w-screen-2xl m-auto bg-base-100;'>
+    <div className='max-w-screen-2xl m-auto bg-base-300;'>
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -39,9 +39,12 @@ function App() {
           <RequireAuth>
             <Purchase />
           </RequireAuth>} />
+        <Route path='/profile' element={
+          <RequireAuth>
+            <MyProfile />
+          </RequireAuth>} />
         <Route path='/reviews' element={<Reviews />} />
         <Route path='/blogs' element={<Blogs />} />
-        <Route path='/profile' element={<MyProfile />} />
         <Route path='/Portfolio' element={<MyPortfolio />} />
         <Route path='/login' element={<Login />} />
         <Route path='/singup' element={<Singup />} />
