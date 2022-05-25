@@ -1,15 +1,15 @@
 import React from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../FirebaseAuth';
-import SocialLogin from '../Login/SocialLogin';
+import useToken from '../../useToken/useToken';
 import Loading from '../Shared/Loading';
 
 const Singup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-
+    const [signInWithGoogle, guser, gloading, gerrors] = useSignInWithGoogle(auth);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -17,30 +17,36 @@ const Singup = () => {
         error
     ] = useCreateUserWithEmailAndPassword(auth);
 
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+    const [token] = useToken(user || guser);
+
     const navigate = useNavigate();
     const location = useLocation();
     const form = location.state?.pathname || '/';
 
-    if (error) {
+    if (error || gerrors || updateError) {
         toast.error(error.message, {
             position: toast.POSITION.TOP_LEFT
         })
     }
 
-    if (loading) {
+    if (loading || gloading || updating) {
         return <Loading />;
     }
 
-    if (user) {
+    if (token) {
         navigate(form);
-    }
-
-
-    const handleSingup = event => {
-        createUserWithEmailAndPassword(event.email, event.password, event.name);
         toast.success(`Congratulations! Welcome our new member`, {
             position: toast.POSITION.TOP_LEFT
         });
+    }
+
+
+    const handleSingup = async data => {
+        await createUserWithEmailAndPassword(data.email, data.password);
+        await updateProfile({ displayName: data.name });
+
     }
 
 
@@ -51,13 +57,20 @@ const Singup = () => {
                     <h1 className="text-3xl font-bold">Register Form</h1>
                     <form onSubmit={handleSubmit(handleSingup)} className='mt-7'>
                         <div className='flex flex-col'>
-                        <input
+                            <input
                                 type="text"
-                                placeholder="Full Name"
-                                name='name'
-                                className="input input-bordered input-success mb-6"
-                                required
+                                placeholder="Your Name"
+                                className="input input-bordered input-success"
+                                {...register("name", {
+                                    required: {
+                                        value: true,
+                                        message: 'Name is Required'
+                                    }
+                                })}
                             />
+                            <label className='my-3'>
+                                {errors.name?.type === 'required' && <span className="label-text-altfont-bold text-red-500">{errors.name.message}</span>}
+                            </label>
                             <input
                                 type="email"
                                 placeholder="Email Address"
@@ -111,7 +124,13 @@ const Singup = () => {
                             <div className='px-12'>
                                 <div className="divider">OR</div>
                             </div>
-                            <SocialLogin />
+                            <div>
+                                <button
+                                    onClick={() => signInWithGoogle()}
+                                    className="btn btn-outline btn-primary text-white my-3 w-full max-w-xs">
+                                    CONTINUE WITH GOOGLE
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

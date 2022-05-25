@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../FirebaseAuth';
 import Loading from '../../Pages/Shared/Loading';
 import { toast } from 'react-toastify';
-import SocialLogin from './SocialLogin';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import useToken from '../../useToken/useToken';
 
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-
+    const [signInWithGoogle, guser, gloading, gerrors] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
         user,
@@ -18,26 +18,29 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user || guser);
 
     const navigate = useNavigate();
     const location = useLocation();
-    const form = location.state?.pathname || '/';
+    let from = location.state?.from?.pathname || "/";
 
-    if (error) {
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+            toast.success(`Welcome! Login Successful`, {
+                position: toast.POSITION.TOP_LEFT
+            });
+        }
+    }, [token, from, navigate])
+
+    if (error || gerrors) {
         toast.error(error.message, {
             position: toast.POSITION.TOP_CENTER
         })
     }
 
-    if (loading) {
+    if (loading || gloading) {
         return <Loading />;
-    }
-
-    if (user) {
-        navigate(form);
-        toast.success(`Welcome! Login Successful`, {
-            position: toast.POSITION.TOP_LEFT
-        });
     }
 
     const handleLogin = event => {
@@ -107,7 +110,13 @@ const Login = () => {
                                     </Link>
                                 </div>
                                 <div className="divider">OR</div>
-                                <SocialLogin />
+                                <div>
+                                    <button
+                                        onClick={() => signInWithGoogle()}
+                                        className="btn btn-outline btn-primary text-white my-3 w-full max-w-xs">
+                                        CONTINUE WITH GOOGLE
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>

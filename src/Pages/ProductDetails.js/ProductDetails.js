@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../FirebaseAuth'
 import Loading from '../Shared/Loading';
+import Swal from 'sweetalert2';
 
 
 const ProductDetails = () => {
@@ -12,15 +13,18 @@ const ProductDetails = () => {
     let [quantity, setQuantity] = useState(0);
     const [user, loading] = useAuthState(auth);
 
-    if(loading){
+
+    if (loading) {
         <Loading />
     }
 
     const handleIncrement = () => {
-        setQuantity(quantity + 1);
+        const previousQuantiy = parseFloat(quantity);
+        setQuantity(previousQuantiy + 1);
     }
     const handleDeincrement = () => {
-        setQuantity(quantity - 1);
+        const previousQuantiy = parseFloat(quantity);
+        setQuantity(previousQuantiy - 1);
     }
     const handleChange = (e) => {
         setQuantity(e.target.value);
@@ -34,10 +38,10 @@ const ProductDetails = () => {
     }, [id]);
 
 
-    const hnadleCart= () => {
+    const hnadleCart = () => {
 
         const orderDetails = {
-            
+
             name: product.name,
             price: product.price,
             quantity: quantity,
@@ -53,60 +57,66 @@ const ProductDetails = () => {
             },
             body: JSON.stringify(orderDetails)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.success) {
-                toast.success(`Your Order is confirm`,{
-                    position: toast.POSITION.TOP_CENTER
-                });
-            }
-            // else{
-            //     toast.error(`Your Appointment is Already Booking on ${data.booking?.date} at ${data.booking?.slot}`,{
-            //         position: toast.POSITION.TOP_CENTER
-            //     });
-            // }
-            
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Congratulations! your order is confirm. Please go to order page',
+                        showConfirmButton: true,
+                        timer: 3500
+                    })
+                }
+            })
 
     }
 
 
     return (
         <div className='my-12'>
-            <div class="card lg:card-side bg-base-100 shadow-xl gap-5 p-10">
+            <div class="card lg:card-side bg-base-200 shadow-xl gap-5 p-10">
                 <figure>
-                    <img src={product.img} alt="Album" />
+                    <img className='rounded-2xl w-10/12' src={product.img} alt="Album" />
                 </figure>
-                <div class="card">
-                    <h2 class="card-title">{product.name}</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
-                        Voluptas ipsum tempore ipsam illum! Praesentium odit laborum maiores, illo asperiores impedit.</p>
-                    <span className='text-5xl'>${product.price}</span>
-                    <p>Stock: {product.stock}</p>
+                <div class="card-body justify-center px-5">
+                    <h2 class="card-title text-2xl">{product.name}</h2>
+                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
+                        Voluptas ipsum tempore ipsam illum! Praesentium odit laborum maiores, illo asperiores impedit.</span>
+                    <span className='text-5xl font-bold'>${product.price}</span>
+                    <span>Stock: {product.stock}</span>
                     <span>Ratings: {product.ratings}</span>
-                    <p>Min Order: 5 pic</p>
-                    <p>Max Order: 50 pic</p>
+                    <span className='text-opacity-5'>Min. Order (5 Pieces)</span>
+                    <span>Max. Order (50 Pieces)</span>
                     <div className='flex items-center gap-2 my-5'>
                         <button class="btn btn-primary btn-outline btn-circle" onClick={handleIncrement}>
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 37 64">
                                 <path d="M35.2 28.8q1.92 0 1.92 3.2t-1.92 3.2h-13.44v13.44q0 1.92-3.2 1.92t-3.2-1.92v-13.44h-13.44q-1.92 0-1.92-3.2t1.92-3.2h13.44v-13.44q0-1.92 3.2-1.92t3.2 1.92v13.44h13.44z"></path>
                             </svg>
                         </button>
-                        <input 
-                            className='input input-bordered input-primary rounded-full text-center w-32' 
-                            type="number" 
-                            value={quantity}  
-                            onChange={handleChange} 
-                            />
+                        <input
+                            className='input input-bordered input-primary rounded-full text-center w-32'
+                            type="number"
+                            value={quantity}
+                            onChange={handleChange}
+                        />
                         <button class="btn btn-primary btn-outline btn-circle" onClick={handleDeincrement}>
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 37 64">
                                 <path d="M35.2 28.8q1.92 0 1.92 3.2t-1.92 3.2h-33.28q-1.92 0-1.92-3.2t1.92-3.2h33.28z"></path>
                             </svg>
                         </button>
+                        {
+                            quantity <= 4 && <span className='text-red-400'>min order 5 unit</span>
+                        }
+                        {
+                            quantity >= 51 && <span className='text-red-400'>max order 50 unit</span>
+                        }
+                        {
+                            product.stock < quantity && <span className='text-red-400'>now available stock only {product.stock} !</span>
+                        }
                     </div>
                     <div class="card-actions my-5">
-                        <button onClick={hnadleCart}  class="btn btn-primary">Check Out</button>
+                        <button onClick={hnadleCart} disabled={quantity <= 4 || quantity >= 51 || product.stock < quantity} class="btn btn-primary">Check Out</button>
                     </div>
                 </div>
             </div>
