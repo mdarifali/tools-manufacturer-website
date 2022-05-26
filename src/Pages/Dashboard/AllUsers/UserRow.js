@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const UserRow = ({ user }) => {
+const UserRow = ({ user, refetch }) => {
     const { email, role } = user;
 
 
@@ -17,7 +17,7 @@ const UserRow = ({ user }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                refetch();
                 toast.success(`Admin Make Done`, {
                     position: toast.POSITION.TOP_LEFT
                 });
@@ -30,7 +30,7 @@ const UserRow = ({ user }) => {
                 <td>1</td>
                 <td>{email}</td>
                 <td>{role !== 'admin' && <button onClick={makeAdmin} class="btn btn-outline btn-xs">Make Admin</button>}</td>
-                <td><button class="btn btn-outline btn-primary btn-xs">delete user</button></td>
+                <td><button class="btn btn-outline btn-primary btn-xs">Delete user</button></td>
             </tr>
 
         </>

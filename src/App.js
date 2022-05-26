@@ -15,6 +15,7 @@ import Purchase from './Pages/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import AddReviews from './Pages/Dashboard/AddReviews/AddReviews';
 import AllUsers from './Pages/Dashboard/AllUsers/AllUsers';
+import RequireAdminAuth from './Pages/Dashboard/RequireAdminAuth';
 
 function App() {
   return (
@@ -36,7 +37,11 @@ function App() {
           <Route path='myorders' element={<MyOrders />} />
           <Route path='addreview' element={<AddReviews />} />
           <Route path='myprofile' element={<MyProfile />} />
-          <Route path='allusers' element={<AllUsers />} />
+          <Route path='allusers' element={
+            <RequireAdminAuth>
+              <AllUsers />
+            </RequireAdminAuth>
+          }/>
         </Route>
         <Route path='/blogs' element={<Blogs />} />
         <Route path='/Portfolio' element={<MyPortfolio />} />

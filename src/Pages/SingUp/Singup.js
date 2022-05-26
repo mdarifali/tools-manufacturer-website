@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../FirebaseAuth';
-import useToken from '../../useToken/useToken';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 
 const Singup = () => {

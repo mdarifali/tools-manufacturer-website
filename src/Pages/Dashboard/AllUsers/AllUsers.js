@@ -21,30 +21,7 @@ const AllUsers = () => {
         return <Loading />
     }
 
-    // const [users, setUsers] = useState([]);
-    // const [user] = useAuthState(auth);
 
-    // useEffect(() => {
-    //     const {email} = user;
-
-    //     if (user) {
-
-    //         fetch('http://localhost:5000/user', {
-    //             method: 'GET',
-    //             headers: {
-    //                 "authorization": `${email} ${localStorage.getItem('accessToken')}`
-    //             }
-    //         })
-
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setUsers(data);
-    //         })
-    //     }
-
-    // }, [user]);
-
-    
     return (
         <div className='p-10'>
             <h1 className='text-center text-4xl uppercase py-5'>All User List</h1>
@@ -63,6 +40,7 @@ const AllUsers = () => {
                             users.map(user => <UserRow 
                                 user = {user}
                                 key = {user._id}
+                                refetch = {refetch}
                             />
                             )
                         }

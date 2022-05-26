@@ -5,7 +5,7 @@ import Loading from '../../Pages/Shared/Loading';
 import { toast } from 'react-toastify';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import useToken from '../../useToken/useToken';
+import useToken from '../../hooks/useToken';
 
 
 const Login = () => {
