@@ -1,35 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
 import auth from '../../../FirebaseAuth';
-
+import Loading from '../../Shared/Loading';
+import UserRow from './UserRow';
 
 
 const AllUsers = () => {
 
-    const [users, setUsers] = useState([]);
     const [user] = useAuthState(auth);
-
-    useEffect(() => {
-        const email = user.email;
-
-        if (user) {
-
-            fetch('http://localhost:5000/user', {
-                method: 'GET',
-                headers: {
-                    "authorization": `${email} ${localStorage.getItem('accessToken')}`
-                }
-            })
-
-            .then(res => res.json())
-            .then(data => {
-                setUsers(data);
-            })
+    const {email} = user;
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+        method: 'GET',
+        headers: {
+            "authorization": `${email} ${localStorage.getItem('accessToken')}`
         }
+    }).then(res => res.json()));
+    
+    if (isLoading) {
+        return <Loading />
+    }
 
-    }, [user])
+    // const [users, setUsers] = useState([]);
+    // const [user] = useAuthState(auth);
 
+    // useEffect(() => {
+    //     const {email} = user;
 
+    //     if (user) {
+
+    //         fetch('http://localhost:5000/user', {
+    //             method: 'GET',
+    //             headers: {
+    //                 "authorization": `${email} ${localStorage.getItem('accessToken')}`
+    //             }
+    //         })
+
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setUsers(data);
+    //         })
+    //     }
+
+    // }, [user]);
+
+    
     return (
         <div className='p-10'>
             <h1 className='text-center text-4xl uppercase py-5'>All User List</h1>
@@ -45,13 +60,10 @@ const AllUsers = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map(user =>
-                                <tr key={user._id}>
-                                    <td>1</td>
-                                    <td>{user.email}</td>
-                                    <td><button class="btn btn-outline btn-xs">Make Admin</button></td>
-                                    <td><button class="btn btn-outline btn-primary btn-xs">delete user</button></td>
-                                </tr>
+                            users.map(user => <UserRow 
+                                user = {user}
+                                key = {user._id}
+                            />
                             )
                         }
 

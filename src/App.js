@@ -13,7 +13,6 @@ import Navbar from './Pages/Shared/Navbar';
 import Singup from './Pages/SingUp/Singup';
 import Purchase from './Pages/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
-import ProductDetails from './Pages/ProductDetails.js/ProductDetails';
 import AddReviews from './Pages/Dashboard/AddReviews/AddReviews';
 import AllUsers from './Pages/Dashboard/AllUsers/AllUsers';
 
@@ -24,11 +23,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        <Route path='ProductDetails/:id' element={
-          <RequireAuth>
-            <ProductDetails />
-          </RequireAuth>} />
-        <Route path='/purchase' element={
+        <Route path='purchase/:id' element={
           <RequireAuth>
             <Purchase />
           </RequireAuth>} />

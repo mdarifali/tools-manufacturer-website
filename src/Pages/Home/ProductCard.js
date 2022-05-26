@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
                     <p>Price: ${price}</p>
                     <p>Stock: {stock}</p>
                     <span>Ratings: {ratings}</span>
-                    <Link to={`/ProductDetails/${product._id}`} class="card-actions justify-end">
+                    <Link to={`/purchase/${product._id}`} class="card-actions justify-end">
                         <button class="btn btn-primary">Buy Now</button>
                     </Link>
                 </div>

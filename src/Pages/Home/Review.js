@@ -39,7 +39,7 @@ const Review = () => {
                                     </div>
                                 </div>
                                 <h2 class="card-title">{review.user}</h2>
-                                <span>Rating ({review.rating}.0)</span>
+                                <span>Rating ({review.rating ? review.rating : <span>no rating found</span>})</span>
                                 <div>
                                     <div class="rating rating-md">
                                         {

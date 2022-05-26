@@ -21,7 +21,6 @@ const NavBar = () => {
         {
             user ?
                 <>
-                    <li class="hover-bordered"><Link to="/purchase">Purchase</Link></li>
                     <li class="hover-bordered"><Link to="/dashboard">Dashboard</Link></li>
                     <li>
                         <button onClick={logout} className='btn btn-outline btn-warning'>Sing Out</button>

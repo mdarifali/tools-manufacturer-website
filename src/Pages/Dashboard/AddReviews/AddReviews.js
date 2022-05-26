@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Swal from 'sweetalert2';
 import auth from '../../../FirebaseAuth';
@@ -6,6 +6,11 @@ import Loading from '../../Shared/Loading';
 
 const AddReviews = () => {
     const [user, loading] = useAuthState(auth);
+    let [rating, setRating] = useState();
+
+    const handleRanting = e => {
+        setRating(e.target.value)
+    }
 
     if (loading) {
         <Loading />
@@ -41,7 +46,7 @@ const AddReviews = () => {
                 }
             })
 
-            event.target.value ='';
+        event.target.value = '';
     }
 
 
@@ -75,10 +80,19 @@ const AddReviews = () => {
                                 <div class="form-control w-96">
                                     <input
                                         type="number"
-                                        name='rating'
-                                        placeholder="rating 1 to 5"
+                                        name='ating'
+                                        placeholder="Rating 1 to 5"
+                                        value={rating}
                                         required
-                                        class="input input-bordered input-success" />
+                                        class="input input-bordered input-success"
+                                        onChange={handleRanting}
+                                    />
+                                    {
+                                        rating <= 0 && <span className='text-gray-200 mt-2'>Rating 1 to 5</span>
+                                    }
+                                    {
+                                        rating > 5 && <span className='text-gray-200 mt-2'>Rating 1 to 5</span>
+                                    }
                                 </div>
                                 <div class="form-control w-96">
                                     <textarea
@@ -86,7 +100,7 @@ const AddReviews = () => {
                                         name='message'
                                         className="textarea textarea-success"
                                         required
-                                        placeholder="Your message">
+                                        placeholder="Your Review">
                                     </textarea>
                                 </div>
                                 <div class="form-control mt-6">
