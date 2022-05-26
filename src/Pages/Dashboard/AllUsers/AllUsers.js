@@ -1,19 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../FirebaseAuth';
 
 
 
 const AllUsers = () => {
 
     const [users, setUsers] = useState([]);
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
-        fetch('http://localhost:5000/user')
+        const email = user.email;
+
+        if (user) {
+
+            fetch('http://localhost:5000/user', {
+                method: 'GET',
+                headers: {
+                    "authorization": `${email} ${localStorage.getItem('accessToken')}`
+                }
+            })
+
             .then(res => res.json())
             .then(data => {
                 setUsers(data);
             })
+        }
 
-    }, [])
+    }, [user])
 
 
     return (
@@ -33,10 +47,10 @@ const AllUsers = () => {
                         {
                             users.map(user =>
                                 <tr key={user._id}>
-                                    <th>1</th>
+                                    <td>1</td>
                                     <td>{user.email}</td>
-                                    <td><button class="btn btn-outline btn-primary btn-xs">Make Admin</button></td>
-                                    <td><button class="btn btn-xs">X</button></td>
+                                    <td><button class="btn btn-outline btn-xs">Make Admin</button></td>
+                                    <td><button class="btn btn-outline btn-primary btn-xs">delete user</button></td>
                                 </tr>
                             )
                         }

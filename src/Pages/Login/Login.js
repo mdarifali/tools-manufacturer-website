@@ -34,7 +34,7 @@ const Login = () => {
     }, [token, from, navigate])
 
     if (error || gerrors) {
-        toast.error(error.message, {
+        toast.error(error?.message || gerrors?.message, {
             position: toast.POSITION.TOP_CENTER
         })
     }
@@ -106,7 +106,7 @@ const Login = () => {
                                 <button type='submit' className="btn btn-secondary text-white my-5 ">Login</button>
                                 <div className='text-sm text-center'>
                                     <Link to='/singup'>
-                                        <p>New to Doctors Portal? <span className='text-primary font-bold'>Create new account</span></p>
+                                        <p>Do you have an account? <span className='text-primary font-bold'>Create new account</span></p>
                                     </Link>
                                 </div>
                                 <div className="divider">OR</div>

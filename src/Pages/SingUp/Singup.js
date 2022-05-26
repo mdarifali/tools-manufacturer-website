@@ -26,7 +26,7 @@ const Singup = () => {
     const form = location.state?.pathname || '/';
 
     if (error || gerrors || updateError) {
-        toast.error(error.message, {
+        toast.error(error?.message || gerrors?.message || updateError?.message, {
             position: toast.POSITION.TOP_LEFT
         })
     }

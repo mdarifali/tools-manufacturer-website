@@ -4,14 +4,16 @@ import auth from '../../../FirebaseAuth';
 
 const MyOrders = () => {
     const [orders, setOrders] = useState([]);
-    const [user] = useAuthState(auth)
+    const [user] = useAuthState(auth);
 
     useEffect(() => {
         const email = user.email;
 
         if (user) {
+            
             const url = `http://localhost:5000/orders?email=${email}`;
             fetch(url, {
+                method: 'GET',
                 headers: {
                     "authorization": `${email} ${localStorage.getItem('accessToken')}`
                 }
@@ -46,7 +48,7 @@ const MyOrders = () => {
 
                         {
                             orders.map(order =>
-                                <tr>
+                                <tr key={order._id}>
                                     <th>
                                         <label>
                                             <input type="checkbox" class="checkbox" />
