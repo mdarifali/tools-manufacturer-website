@@ -1,4 +1,5 @@
 import React from 'react';
+import dashboard from '../../assets/icons/dashboard.svg'
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
@@ -21,7 +22,7 @@ const NavBar = () => {
         {
             user ?
                 <>
-                    <li class="hover-bordered"><Link to="/dashboard">Dashboard</Link></li>
+                    <li classNam="sm:hidden hover-bordered "><Link to="/dashboard">Dashboard</Link></li>
                     <li>
                         <button onClick={logout} className='btn btn-outline btn-warning'>Sing Out</button>
                     </li>
@@ -47,6 +48,11 @@ const NavBar = () => {
                 <ul class="menu menu-horizontal p-1 gap-1">
                     {navItems}
                 </ul>
+            </div>
+            <div class="navbar-end lg:hidden">
+                <label for="my-drawer-2" tabindex="0" class="btn btn-ghost lg:hidden">
+                    <img src={dashboard} alt="" />
+                </label>
             </div>
         </div>
     );

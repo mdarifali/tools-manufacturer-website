@@ -14,8 +14,11 @@ import Singup from './Pages/SingUp/Singup';
 import Purchase from './Pages/Purchase/Purchase';
 import MyPortfolio from './Pages/MyPortfolio/MyPortfolio';
 import AddReviews from './Pages/Dashboard/AddReviews/AddReviews';
-import AllUsers from './Pages/Dashboard/AllUsers/AllUsers';
+import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import RequireAdminAuth from './Pages/Dashboard/RequireAdminAuth';
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
+import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
+import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 
 function App() {
   return (
@@ -33,13 +36,16 @@ function App() {
             <Dashboard />
           </RequireAuth>
         }>
-          <Route index element={<MyOrders />} />
+          {/* <Route index element={<MyOrders />} /> */}
           <Route path='myorders' element={<MyOrders />} />
           <Route path='addreview' element={<AddReviews />} />
           <Route path='myprofile' element={<MyProfile />} />
-          <Route path='allusers' element={
+          <Route path='manage-orders' element={<ManageAllOrders />} />
+          <Route path='add-product' element={<AddProduct />} />
+          <Route path='manage-products' element={<ManageProducts />} />
+          <Route path='make-Admin' element={
             <RequireAdminAuth>
-              <AllUsers />
+              <MakeAdmin />
             </RequireAdminAuth>
           }/>
         </Route>

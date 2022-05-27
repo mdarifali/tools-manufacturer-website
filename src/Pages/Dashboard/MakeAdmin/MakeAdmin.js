@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../../FirebaseAuth';
@@ -6,7 +5,7 @@ import Loading from '../../Shared/Loading';
 import UserRow from './UserRow';
 
 
-const AllUsers = () => {
+const MakeAdmin = () => {
 
     const [user] = useAuthState(auth);
     const {email} = user;
@@ -26,7 +25,7 @@ const AllUsers = () => {
         <div className='p-10'>
             <h1 className='text-center text-4xl uppercase py-5'>All User List</h1>
             <div class="overflow-x-auto">
-                <table class="table table-zebra w-full">
+                <table class="table table-zebra w-full text-center">
                     <thead>
                         <tr>
                             <th></th>
@@ -52,4 +51,4 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+export default MakeAdmin;
