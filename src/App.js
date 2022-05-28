@@ -19,6 +19,7 @@ import RequireAdminAuth from './Pages/Dashboard/RequireAdminAuth';
 import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
 import AddProduct from './Pages/Dashboard/AddProduct/AddProduct';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
+import Payment from './Pages/Dashboard/Payment/Payment';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         }>
           {/* <Route index element={<MyOrders />} /> */}
           <Route path='myorders' element={<MyOrders />} />
+          <Route path='payment/:id' element={<Payment />} />
           <Route path='addreview' element={<AddReviews />} />
           <Route path='myprofile' element={<MyProfile />} />
           <Route path='manage-orders' element={<ManageAllOrders />} />

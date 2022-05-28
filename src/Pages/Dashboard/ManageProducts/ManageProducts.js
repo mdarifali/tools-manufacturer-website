@@ -1,10 +1,117 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const ManageProducts = () => {
 
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data)
+            });
+
+    }, [products])
+
+    const handleDelete = id => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to delete this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                const url = `http://localhost:5000/products/${id}`
+                fetch(url, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+            }
+        })
+    }
+
+
     return (
-        <div>
-            <h1>Manage Products</h1>
+        <div className='p-10'>
+            <h1 className='text-center text-4xl uppercase py-5'>Manage All Products</h1>
+            <div class="overflow-x-auto w-full">
+
+                    <table class="table w-full">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" class="checkbox" />
+                                    </label>
+                                </th>
+                                <th>SL</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {
+                                products.map((product, index) =>
+                                    <tr key={product._id}>
+                                        <th>
+                                            <label>
+                                                <input type="checkbox" class="checkbox" />
+                                            </label>
+                                        </th>
+                                        <th>{index + 1}</th>
+                                        <td>
+                                            <div class="flex items-center space-x-3">
+                                                <div class="avatar">
+                                                    <div class="mask mask-squircle w-12 h-12">
+                                                        <img src={product.img} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="font-bold">{product.name}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span>${product.price}</span>
+                                        </td>
+                                        <td>
+                                            <span>{product.stock}</span>
+                                        </td>
+                                        <th>
+                                            <button onClick={() => handleDelete(product._id)} class="btn btn-primary btn-xs">Delete</button>
+                                        </th>
+                                    </tr>
+                                )
+                            }
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>SL</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+            </div>
         </div>
     );
 };

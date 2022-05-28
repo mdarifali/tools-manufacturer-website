@@ -9,11 +9,9 @@ const Review = () => {
 
     useEffect(() => {
        
-
         if (user) {
             const url = `http://localhost:5000/reviews`;
             fetch(url, {
-
                 method: 'GET',
                 headers: {
                     "authorization": `${user.email} ${localStorage.getItem('accessToken')}`

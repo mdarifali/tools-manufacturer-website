@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
 import auth from '../../../FirebaseAuth';
 
 const MyOrders = () => {
@@ -10,7 +11,7 @@ const MyOrders = () => {
         const email = user.email;
 
         if (user) {
-            
+
             const url = `http://localhost:5000/orders?email=${email}`;
             fetch(url, {
                 method: 'GET',
@@ -38,22 +39,25 @@ const MyOrders = () => {
                                     <input type="checkbox" class="checkbox" />
                                 </label>
                             </th>
+                            <th>SL</th>
                             <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Total Quantity</th>
+                            <th>Paymet</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         {
-                            orders.map(order =>
-                                <tr key={order._id}>
+                            orders.map((order, index) =>
+                                <tr>
                                     <th>
                                         <label>
                                             <input type="checkbox" class="checkbox" />
                                         </label>
                                     </th>
+                                    <th>{index + 1}</th>
                                     <td>
                                         <div class="flex items-center space-x-3">
                                             <div class="avatar">
@@ -73,6 +77,9 @@ const MyOrders = () => {
                                         <span>{order.quantity}</span>
                                     </td>
                                     <th>
+                                        <Link to={`/dashboard/payment/${order._id}`}><button class="btn btn-warning btn-xs">Pay Now</button></Link>
+                                    </th>
+                                    <th>
                                         <button class="btn btn-primary btn-xs">Delete</button>
                                     </th>
                                 </tr>
@@ -83,9 +90,11 @@ const MyOrders = () => {
                     <tfoot>
                         <tr>
                             <th></th>
+                            <th>SL</th>
                             <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Total Quantity</th>
+                            <th>Paymet</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

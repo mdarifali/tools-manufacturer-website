@@ -42,11 +42,13 @@ const Purchase = () => {
 
     const hnadleCart = (e) => {
         e.preventDefault();
+        const newPrice = parseFloat(product.price);
+        const updatePrice = quantity * newPrice;
 
         const orderDetails = {
 
             name: product.name,
-            price: product.price,
+            price: updatePrice,
             quantity: quantity,
             img: product.img,
             phone: e.target.phone.value,
@@ -64,7 +66,6 @@ const Purchase = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.success) {
                     Swal.fire({
                         icon: 'success',

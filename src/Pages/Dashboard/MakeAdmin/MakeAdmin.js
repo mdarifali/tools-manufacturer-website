@@ -25,7 +25,7 @@ const MakeAdmin = () => {
         <div className='p-10'>
             <h1 className='text-center text-4xl uppercase py-5'>All User List</h1>
             <div class="overflow-x-auto">
-                <table class="table table-zebra w-full text-center">
+                <table class="table table-zebra w-full">
                     <thead>
                         <tr>
                             <th></th>
