@@ -1,14 +1,16 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 const CheckoutForm = ({ orders }) => {
-    // const [user] = useAuthState (auth);
     const stripe = useStripe();
     const elements = useElements();
+    const [cardError, setCardError] = useState('');
+    const [success, setSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
-    const { id, price, name } = orders;
+    const { _id, price, user, email } = orders;
 
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
@@ -28,84 +30,106 @@ const CheckoutForm = ({ orders }) => {
 
     }, [price])
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (elements || !stripe) {
-
+        if (!stripe || !elements) {
+            return;
         }
 
         const card = elements.getElement(CardElement);
 
-        if (card == null) {
+        if (card === null) {
             return;
         }
 
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
-            card,
+            card
         });
 
-        if (error) {
+        setCardError(error?.message || '')
+        setSuccess('');
+        setProcessing(true);
+        // confirm card payment
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: user,
+                        email: email
+                    },
+                },
+            },
+        );
 
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: `${error.message}`
-            })
-        } else {
-            Swal.fire({
-                icon: 'success',
-                title: 'Congratulations! Your Payment is Successful.',
-                showConfirmButton: true,
-                timer: 3500
-            })
-            console.log('[PaymentMethod]', paymentMethod);
+        if (intentError) {
+            setCardError(intentError?.message);
+            setProcessing(false);
         }
+        else {
+            setCardError('');
+            setTransactionId(paymentIntent.id);
+            console.log(paymentIntent);
+            setSuccess('Congrats! Your payment is completed.')
 
-        // setCardError(error?.message || '')
-        // setSuccess('');
-        // setProcessing(true);
-        // // confirm card payment
-        // const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
-        //     clientSecret,
-        //     {
-        //         payment_method: {
-        //             card: card,
-        //             billing_details: {
-        //                 name: name,
-        //                 email: patient
-        //             },
-        //         },
-        //     },
-        
+            //store payment on database
+            const payment = {
+                order: _id,
+                transactionId: paymentIntent.id
+            }
+            fetch(`http://localhost:5000/orders/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            }).then(res => res.json())
+                .then(data => {
+                    setProcessing(false);
+                    console.log(data);
+                })
+
+        }
     }
-
     return (
-        <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <>
+            <form onSubmit={handleSubmit}>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <div className='float-left'>
-                <button className='btn btn-success btn-outline mt-5' type="submit" disabled={!stripe || !clientSecret}>
-                    Pay
-                </button>
-            </div>
-        </form>
+                    }}
+                />
+                <div className='text-left'>
+                    <button className='btn btn-success btn-sm mt-5 ' type="submit" disabled={!stripe || !clientSecret || success}>
+                        Pay
+                    </button>
+                </div>
+            </form>
+            {
+                cardError && <p className='text-red-500'>{cardError}</p>
+            }
+            {
+                success && <div className='text-green-500'>
+                    <p>{success}  </p>
+                    <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
+                </div>
+            }
+        </>
     );
 };
 
