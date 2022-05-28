@@ -1,7 +1,6 @@
 ## Auto Parts Manufacturer Website ##
 
-Live Site Link: https://inventory-management-web-d2fba.firebaseapp.com/
-
+Live Site Link: https://car-parts-manufacturers.web.app/
 Description:
 
 - Manage Inventory
