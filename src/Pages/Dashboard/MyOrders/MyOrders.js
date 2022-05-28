@@ -51,7 +51,7 @@ const MyOrders = () => {
 
                         {
                             orders.map((order, index) =>
-                                <tr>
+                                <tr key={order._id}>
                                     <th>
                                         <label>
                                             <input type="checkbox" class="checkbox" />

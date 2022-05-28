@@ -4,7 +4,6 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import auth from '../../../FirebaseAuth';
 import Loading from '../../Shared/Loading';
 import CheckoutForm from './CheckoutForm';
 
@@ -12,14 +11,14 @@ const stripePromise = loadStripe('pk_test_51L1soMJrl1J4OiD0cvNcwtxlxtqEFOvLSEFRG
 
 const Payment = () => {
     const { id } = useParams();
-    const [user] = useAuthState(auth);
     const url = `http://localhost:5000/orders/${id}`
 
     const { data: orders, isLoading } = useQuery(['orders', id], () => fetch(url, {
 
         method: 'GET',
         headers: {
-            "authorization": `${user.email} ${localStorage.getItem('accessToken')}`
+            'content-type': 'application/json',
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json()));
 
@@ -39,7 +38,7 @@ const Payment = () => {
                 </div>
                 <div className="card-body bg-base-100">
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm />
+                        <CheckoutForm orders={orders}/>
                     </Elements>
                 </div>
             </div>
