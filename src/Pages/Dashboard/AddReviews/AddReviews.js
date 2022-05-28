@@ -26,7 +26,7 @@ const AddReviews = () => {
             user: user.displayName,
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://radiant-plains-16562.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -52,39 +52,39 @@ const AddReviews = () => {
 
     return (
         <div>
-            <div class="hero min-h-screen">
-                <div class="hero-content text-center">
-                    <div class="max-w-md">
+            <div className="hero min-h-screen">
+                <div className="hero-content text-center">
+                    <div className="max-w-md">
                         <h1 className='text-center text-4xl uppercase mb-10'>Review Submit</h1>
-                        <form onSubmit={hnadleReview} class="card shadow-2xl bg-base-100">
+                        <form onSubmit={hnadleReview} className="card shadow-2xl bg-base-100">
 
-                            <div class="card-body gap-6">
-                                <div class="form-control w-96">
+                            <div className="card-body gap-6">
+                                <div className="form-control w-96">
                                     <input
                                         type="text"
                                         value={user?.displayName}
                                         placeholder="Name"
                                         required
                                         disabled
-                                        class="input input-bordered input-success" />
+                                        className="input input-bordered input-success" />
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <input
                                         type="email"
                                         value={user?.email}
                                         placeholder="email"
                                         required
                                         disabled
-                                        class="input input-bordered input-success" />
+                                        className="input input-bordered input-success" />
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <input
                                         type="number"
                                         name='ating'
                                         placeholder="Rating 1 to 5"
                                         value={rating}
                                         required
-                                        class="input input-bordered input-success"
+                                        className="input input-bordered input-success"
                                         onChange={handleRanting}
                                     />
                                     {
@@ -94,7 +94,7 @@ const AddReviews = () => {
                                         rating > 5 && <span className='text-gray-200 mt-2'>Rating 1 to 5</span>
                                     }
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <textarea
                                         type='text'
                                         name='message'
@@ -103,8 +103,8 @@ const AddReviews = () => {
                                         placeholder="Your Review">
                                     </textarea>
                                 </div>
-                                <div class="form-control mt-6">
-                                    <button class="btn btn-primary">SUBMIT</button>
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-primary">SUBMIT</button>
                                 </div>
                             </div>
                         </form>

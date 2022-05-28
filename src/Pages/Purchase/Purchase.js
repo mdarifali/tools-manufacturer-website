@@ -33,7 +33,7 @@ const Purchase = () => {
     }
 
     useEffect(() => {
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://radiant-plains-16562.herokuapp.com/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -57,7 +57,7 @@ const Purchase = () => {
             user: user.displayName,
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://radiant-plains-16562.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -81,35 +81,35 @@ const Purchase = () => {
 
     return (
         <div className='mt-20'>
-            <div class="navbar bg-base-200">
-                <div class="flex-1 px-7">
+            <div className="navbar bg-base-200">
+                <div className="flex-1 px-7">
                     <span className='text-xl'>Product id: {id}</span>
                 </div>
-                <div class="flex-none gap-5">
-                    <div class="dropdown dropdown-end">
-                        <label tabindex="0" class="btn btn-ghost btn-circle">
-                            <div class="indicator">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                                <span class="badge badge-sm indicator-item"></span>
+                <div className="flex-none gap-5">
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex="0" className="btn btn-ghost btn-circle">
+                            <div className="indicator">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                                <span className="badge badge-sm indicator-item"></span>
                             </div>
                         </label>
-                        <div tabindex="0" class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
-                            <div class="card-body">
-                                <span class="font-bold text-lg">8 Items</span>
-                                <span class="text-info">Subtotal: $999</span>
-                                <div class="card-actions">
-                                    <Link to='/dashboard/myorders' class="btn btn-primary btn-block">View Order</Link>
+                        <div tabIndex="0" className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
+                            <div className="card-body">
+                                <span className="font-bold text-lg">8 Items</span>
+                                <span className="text-info">Subtotal: $999</span>
+                                <div className="card-actions">
+                                    <Link to='/dashboard/myorders' className="btn btn-primary btn-block">View Order</Link>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="dropdown dropdown-end">
-                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                            <div class="w-10 rounded-full">
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
                                 <img src={usericon} alt='#' />
                             </div>
                         </label>
-                        <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <div className='text-center'>
                                 <p className='text-2xl'>{user.displayName}</p>
                                 <p className='text-xl text-red-400'>{user.email}</p>
@@ -118,12 +118,12 @@ const Purchase = () => {
                     </div>
                 </div>
             </div>
-            <div class="card lg:card-side bg-base-200 rounded-none shadow-xl gap-5 p-10">
+            <div className="card lg:card-side bg-base-200 rounded-none shadow-xl gap-5 p-10">
                 <figure>
                     <img className='rounded-2xl lg:w-11/12' src={product.img} alt="Album" />
                 </figure>
-                <div class="card-body">
-                    <h1 class="card-title text-3xl">{product.name}</h1>
+                <div className="card-body">
+                    <h1 className="card-title text-3xl">{product.name}</h1>
                     <div className='my-3'>
                         <p className='w-96'>Description: {product.description}</p>
                     </div>
@@ -133,7 +133,7 @@ const Purchase = () => {
                     <span className='text-opacity-5'>Min. Order (5 Pieces)</span>
                     <span>Max. Order (50 Pieces)</span>
                     <div className='flex items-center gap-2 my-5'>
-                        <button class="btn btn-success btn-outline btn-circle" onClick={handleIncrement}>
+                        <button className="btn btn-success btn-outline btn-circle" onClick={handleIncrement}>
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 37 64">
                                 <path d="M35.2 28.8q1.92 0 1.92 3.2t-1.92 3.2h-13.44v13.44q0 1.92-3.2 1.92t-3.2-1.92v-13.44h-13.44q-1.92 0-1.92-3.2t1.92-3.2h13.44v-13.44q0-1.92 3.2-1.92t3.2 1.92v13.44h13.44z"></path>
                             </svg>
@@ -144,7 +144,7 @@ const Purchase = () => {
                             value={quantity}
                             onChange={handleChange}
                         />
-                        <button class="btn btn-success btn-outline btn-circle" onClick={handleDeincrement}>
+                        <button className="btn btn-success btn-outline btn-circle" onClick={handleDeincrement}>
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 37 64">
                                 <path d="M35.2 28.8q1.92 0 1.92 3.2t-1.92 3.2h-33.28q-1.92 0-1.92-3.2t1.92-3.2h33.28z"></path>
                             </svg>
@@ -160,14 +160,14 @@ const Purchase = () => {
                         }
                     </div>
                     <form onSubmit={hnadleCart}>
-                        <div class="form-control">
-                            <input type="text" name='phone' required placeholder="Phone Number" class="input input-success w-72" />
+                        <div className="form-control">
+                            <input type="text" name='phone' required placeholder="Phone Number" className="input input-success w-72" />
                         </div>
-                        <div class="form-control my-3">
-                            <textarea name='address' required class="textarea input-success w-72" placeholder="Enter Delivery Address"></textarea>
+                        <div className="form-control my-3">
+                            <textarea name='address' required className="textarea input-success w-72" placeholder="Enter Delivery Address"></textarea>
                         </div>
-                        <div class="card-actions mt-4">
-                            <button disabled={quantity <= 4 || quantity >= 51 || product.stock < quantity} class="btn btn-success">Check Out</button>
+                        <div className="card-actions mt-4">
+                            <button disabled={quantity <= 4 || quantity >= 51 || product.stock < quantity} className="btn btn-success">Check Out</button>
                         </div>
                     </form>
                 </div>

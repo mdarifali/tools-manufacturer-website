@@ -7,7 +7,7 @@ const Products = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const url = `http://localhost:5000/products`;
+        const url = `https://radiant-plains-16562.herokuapp.com/products`;
         setLoading(true)
         fetch(url)
         .then(res => res.json())

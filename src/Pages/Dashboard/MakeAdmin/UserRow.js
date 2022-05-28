@@ -8,7 +8,7 @@ const UserRow = ({ user, refetch }) => {
     const makeAdmin = () => {
         const email = user.email;
         
-        const url = `http://localhost:5000/user/admin/${email}`
+        const url = `https://radiant-plains-16562.herokuapp.com/user/admin/${email}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -30,11 +30,11 @@ const UserRow = ({ user, refetch }) => {
                 <td>1</td>
                 <td>{email}</td>
                 <td>{role !== 'admin' ?
-                    <button onClick={makeAdmin} class="btn btn-outline btn-xs">Make Admin</button>
-                    :<span class="badge badge-primary">Admin</span>
+                    <button onClick={makeAdmin} className="btn btn-outline btn-xs">Make Admin</button>
+                    :<span className="badge badge-primary">Admin</span>
                     }
                 </td>
-                <td><button class="btn btn-outline btn-primary btn-xs">Delete user</button></td>
+                <td><button className="btn btn-outline btn-primary btn-xs">Delete user</button></td>
             </tr>
 
         </>

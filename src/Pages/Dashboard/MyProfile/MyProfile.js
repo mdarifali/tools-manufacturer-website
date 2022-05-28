@@ -11,7 +11,7 @@ const MyProfile = () => {
 
     useEffect(() => {
         const email = user.email;
-        const url = `http://localhost:5000/profile?email=${email}`;
+        const url = `https://radiant-plains-16562.herokuapp.com/profile?email=${email}`;
         fetch(url, {
             method: 'GET',
             headers: {
@@ -24,12 +24,12 @@ const MyProfile = () => {
 
     return (
         <div>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content text-center">
-                    <div class="max-w-md">
-                        <h1 class="text-5xl font-bold">Create Your Profile</h1>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content text-center">
+                    <div className="max-w-md">
+                        <h1 className="text-5xl font-bold">Create Your Profile</h1>
                         <Link to={`/dashboard/add-profile`}>
-                            <button class="btn btn-primary mt-5">Get Started</button>
+                            <button className="btn btn-primary mt-5">Get Started</button>
                         </Link>
                     </div>
                 </div>

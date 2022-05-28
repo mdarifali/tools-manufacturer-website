@@ -18,7 +18,7 @@ const AddProfile = () => {
 
         }
 
-        fetch('http://localhost:5000/profile', {
+        fetch('https://radiant-plains-16562.herokuapp.com/profile', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -41,47 +41,47 @@ const AddProfile = () => {
 
     }
     return (
-        <div class="hero min-h-screen">
-            <div class="hero-content text-center">
-                <div class="max-w-md">
+        <div className="hero min-h-screen">
+            <div className="hero-content text-center">
+                <div className="max-w-md">
                     <h1 className='text-center text-4xl uppercase mb-10'>Add Your Profile</h1>
-                    <form onSubmit={hnadlProfile} class="card shadow-2xl bg-base-100">
+                    <form onSubmit={hnadlProfile} className="card shadow-2xl bg-base-100">
 
-                        <div class="card-body gap-6">
-                            <div class="form-control w-96">
+                        <div className="card-body gap-6">
+                            <div className="form-control w-96">
                                 <input
                                     type="text"
                                     placeholder="Full Name"
                                     name='name'
                                     required
-                                    class="input input-bordered input-success" />
+                                    className="input input-bordered input-success" />
                             </div>
-                            <div class="form-control w-96">
+                            <div className="form-control w-96">
                                 <input
                                     type="email"
                                     placeholder="Email"
                                     name='email'
                                     required
-                                    class="input input-bordered input-success" />
+                                    className="input input-bordered input-success" />
                             </div>
-                            <div class="form-control w-96">
+                            <div className="form-control w-96">
                                 <input
                                     type="number"
                                     placeholder="Phone"
                                     name='phone'
                                     required
-                                    class="input input-bordered input-success" />
+                                    className="input input-bordered input-success" />
                             </div>
-                            <div class="form-control w-96">
+                            <div className="form-control w-96">
                                 <input
                                     type="text"
                                     name='education'
                                     placeholder="Education"
                                     required
-                                    class="input input-bordered input-success"
+                                    className="input input-bordered input-success"
                                 />
                             </div>
-                            <div class="form-control w-96">
+                            <div className="form-control w-96">
                                 <textarea
                                     type='text'
                                     name='adderss'
@@ -90,20 +90,20 @@ const AddProfile = () => {
                                     placeholder="Your Address">
                                 </textarea>
                             </div>
-                            <div class="form-control w-96">
+                            <div className="form-control w-96">
                                 <input
                                     type="text"
                                     name='img'
                                     placeholder="Social Profile Url"
                                     required
-                                    class="input input-bordered input-success"
+                                    className="input input-bordered input-success"
                                 />
                             </div>
-                            <div class="form-control mt-6">
-                                <button class="btn btn-primary">SUBMIT</button>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">SUBMIT</button>
                             </div>
-                            <div class="form-control mt-2">
-                                <Link to={`/dashboard/myprofile`}><button class="btn btn-primary">Go Profile Page</button></Link>
+                            <div className="form-control mt-2">
+                                <Link to={`/dashboard/myprofile`}><button className="btn btn-primary">Go Profile Page</button></Link>
                             </div>
                         </div>
                     </form>

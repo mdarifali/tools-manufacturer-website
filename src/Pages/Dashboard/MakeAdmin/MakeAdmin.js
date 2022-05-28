@@ -9,7 +9,7 @@ const MakeAdmin = () => {
 
     const [user] = useAuthState(auth);
     const {email} = user;
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://radiant-plains-16562.herokuapp.com/user', {
         method: 'GET',
         headers: {
             "authorization": `${email} ${localStorage.getItem('accessToken')}`
@@ -24,8 +24,8 @@ const MakeAdmin = () => {
     return (
         <div className='p-10'>
             <h1 className='text-center text-4xl uppercase py-5'>All User List</h1>
-            <div class="overflow-x-auto">
-                <table class="table table-zebra w-full">
+            <div className="overflow-x-auto">
+                <table className="table table-zebra w-full">
                     <thead>
                         <tr>
                             <th></th>

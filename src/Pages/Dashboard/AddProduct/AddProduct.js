@@ -25,7 +25,7 @@ const AddProduct = () => {
 
         }
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://radiant-plains-16562.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -50,56 +50,56 @@ const AddProduct = () => {
 
     return (
         <div>
-            <div class="hero min-h-screen">
-                <div class="hero-content text-center">
-                    <div class="max-w-md">
+            <div className="hero min-h-screen">
+                <div className="hero-content text-center">
+                    <div className="max-w-md">
                         <h1 className='text-center text-4xl uppercase mb-10'>Add New Product</h1>
-                        <form onSubmit={hnadleAddProduct} class="card shadow-2xl bg-base-100">
+                        <form onSubmit={hnadleAddProduct} className="card shadow-2xl bg-base-100">
 
-                            <div class="card-body gap-6">
-                                <div class="form-control w-96">
+                            <div className="card-body gap-6">
+                                <div className="form-control w-96">
                                     <input
                                         type="text"
                                         placeholder="Product Name"
                                         name='name'
                                         required
-                                        class="input input-bordered input-success" />
+                                        className="input input-bordered input-success" />
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <input
                                         type="number"
                                         placeholder="Price"
                                         name='price'
                                         required
-                                        class="input input-bordered input-success" />
+                                        className="input input-bordered input-success" />
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <input
                                         type="number"
                                         placeholder="Stock"
                                         name='stock'
                                         required
-                                        class="input input-bordered input-success" />
+                                        className="input input-bordered input-success" />
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <input
                                         type="number"
                                         name='rating'
                                         placeholder="Rating"
                                         required
-                                        class="input input-bordered input-success"
+                                        className="input input-bordered input-success"
                                     />
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <input
                                         type="text"
                                         name='img'
                                         placeholder="Product Image Url"
                                         required
-                                        class="input input-bordered input-success"
+                                        className="input input-bordered input-success"
                                     />
                                 </div>
-                                <div class="form-control w-96">
+                                <div className="form-control w-96">
                                     <textarea
                                         type='text'
                                         name='description'
@@ -108,8 +108,8 @@ const AddProduct = () => {
                                         placeholder="Prouct Description">
                                     </textarea>
                                 </div>
-                                <div class="form-control mt-6">
-                                    <button class="btn btn-primary">SUBMIT</button>
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-primary">SUBMIT</button>
                                 </div>
                             </div>
                         </form>

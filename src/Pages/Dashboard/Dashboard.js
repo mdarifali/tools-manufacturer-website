@@ -11,15 +11,15 @@ const Dashboard = () => {
 
     return (
         <div className='bg-slate-400 mt-20'>
-            <div class="drawer drawer-mobile">
-                <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content text-center">
+            <div className="drawer drawer-mobile">
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content text-center">
                     
                     <Outlet></Outlet>
                 </div>
-                <div class="drawer-side">
-                    <label for="my-drawer-2" class="drawer-overlay"></label>
-                    <ul class="menu p-5 overflow-y-auto w-72 bg-accent text-white gap-4">
+                <div className="drawer-side">
+                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                    <ul className="menu p-5 overflow-y-auto w-72 bg-accent text-white gap-4">
                         <div className='flex justify-start items-center border border-purple-700 p-2 gap-3'>
                             <img className='w-12' src={adminDash} alt="" />
                             <span 

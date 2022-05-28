@@ -13,7 +13,7 @@ const MyOrders = () => {
 
         if (user) {
 
-            const url = `http://localhost:5000/orders?email=${email}`;
+            const url = `https://radiant-plains-16562.herokuapp.com/orders?email=${email}`;
             fetch(url, {
                 method: 'GET',
                 headers: {
@@ -42,7 +42,7 @@ const MyOrders = () => {
                     'Your file has been deleted.',
                     'success'
                 )
-                const url = `http://localhost:5000/orders/${id}`
+                const url = `https://radiant-plains-16562.herokuapp.com/orders/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })
@@ -58,14 +58,14 @@ const MyOrders = () => {
     return (
         <div className='p-10'>
             <h1 className='text-center text-4xl uppercase py-5'>Order Item List</h1>
-            <div class="overflow-x-auto w-full">
-                <table class="table w-full">
+            <div className="overflow-x-auto w-full">
+                <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
                             <th>
                                 <label>
-                                    <input type="checkbox" class="checkbox" />
+                                    <input type="checkbox" className="checkbox" />
                                 </label>
                             </th>
                             <th>SL</th>
@@ -83,19 +83,19 @@ const MyOrders = () => {
                                 <tr key={order._id}>
                                     <th>
                                         <label>
-                                            <input type="checkbox" class="checkbox" />
+                                            <input type="checkbox" className="checkbox" />
                                         </label>
                                     </th>
                                     <th>{index + 1}</th>
                                     <td>
-                                        <div class="flex items-center space-x-3">
-                                            <div class="avatar">
-                                                <div class="mask mask-squircle w-12 h-12">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
                                                     <img src={order.img} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                             <div>
-                                                <div class="font-bold">{order.name}</div>
+                                                <div className="font-bold">{order.name}</div>
                                             </div>
                                         </div>
                                     </td>
@@ -119,7 +119,7 @@ const MyOrders = () => {
                                     </th>
                                     <th>
                                         {!order.paid &&
-                                            <button onClick={ () => cancelOrder (order._id)} class="btn btn-primary btn-xs">cancel</button>
+                                            <button onClick={ () => cancelOrder (order._id)} className="btn btn-primary btn-xs">cancel</button>
                                         }
                                     </th>
                                 </tr>

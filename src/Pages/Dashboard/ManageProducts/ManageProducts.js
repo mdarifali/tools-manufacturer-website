@@ -6,7 +6,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://radiant-plains-16562.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
@@ -31,7 +31,7 @@ const ManageProducts = () => {
                     'Your file has been deleted.',
                     'success'
                 )
-                const url = `http://localhost:5000/products/${id}`
+                const url = `https://radiant-plains-16562.herokuapp.com/products/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })
@@ -47,14 +47,14 @@ const ManageProducts = () => {
     return (
         <div className='p-10'>
             <h1 className='text-center text-4xl uppercase py-5'>Manage All Products</h1>
-            <div class="overflow-x-auto w-full">
+            <div className="overflow-x-auto w-full">
 
-                    <table class="table w-full">
+                    <table className="table w-full">
                         <thead>
                             <tr>
                                 <th>
                                     <label>
-                                        <input type="checkbox" class="checkbox" />
+                                        <input type="checkbox" className="checkbox" />
                                     </label>
                                 </th>
                                 <th>SL</th>
@@ -71,19 +71,19 @@ const ManageProducts = () => {
                                     <tr key={product._id}>
                                         <th>
                                             <label>
-                                                <input type="checkbox" class="checkbox" />
+                                                <input type="checkbox" className="checkbox" />
                                             </label>
                                         </th>
                                         <th>{index + 1}</th>
                                         <td>
-                                            <div class="flex items-center space-x-3">
-                                                <div class="avatar">
-                                                    <div class="mask mask-squircle w-12 h-12">
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
                                                         <img src={product.img} alt="Avatar Tailwind CSS Component" />
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div class="font-bold">{product.name}</div>
+                                                    <div className="font-bold">{product.name}</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -94,7 +94,7 @@ const ManageProducts = () => {
                                             <span>{product.stock}</span>
                                         </td>
                                         <th>
-                                            <button onClick={() => handleDelete(product._id)} class="btn btn-primary btn-xs">Delete</button>
+                                            <button onClick={() => handleDelete(product._id)} className="btn btn-primary btn-xs">Delete</button>
                                         </th>
                                     </tr>
                                 )
