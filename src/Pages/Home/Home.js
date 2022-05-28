@@ -4,18 +4,20 @@ import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import Carousel from './Carousel';
 import ContactUs from './ContactUs';
+import GeneralQuestions from './GeneralQuestions';
 import Products from './Products';
 import Review from './Review';
 
 const Home = () => {
     return (
         <div className=''>
-            <Banner />
+            <Carousel />
             <Products />
             <Review />
             <BusinessSummary />
-            <Carousel />
+            <GeneralQuestions />
             <ContactUs />
+            <Banner />
             <Footer />
         </div>
     );

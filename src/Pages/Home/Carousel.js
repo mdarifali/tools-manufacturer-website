@@ -1,35 +1,47 @@
 import React from 'react';
-import banner from '../../assets/images/Banner.jpg';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import slide1 from '../../assets/images/slide-1.jpg';
+import slide2 from '../../assets/images/slide-2.jpg';
+import slide3 from '../../assets/images/slide-3.jpg';
 
 const carousel = () => {
+
+
     return (
-        <div className='my-10'>
-            <div className='card shadow-lg p-10'>
-            <div class="carousel rounded-box">
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=8B7BCDC2" alt="Burger" />
+        <div className='pt-20'>
+            <Carousel>
+                <div className='relative'>
+                    <img src={slide1} alt='#' />
+                    <div className='absolute lg:top-40 lg:left-60 xs:hiden'>
+                        <div className='text-left'>
+                            <span className='font-bold text-warning'>GET UPTO</span>
+                            <p className='text-4xl font-bold text-red-500'> 33% OFF <br /> FOR ALL PRODUCTS</p> <br />
+                            <button className='btn btn-primary mt-5'>GET STARTED</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=500B67FB" alt="Burger" />
+                <div>
+                    <img src={slide2} alt='#' />
+                    <div className='absolute lg:top-40 lg:left-60 xs:hiden'>
+                        <div className='text-left'>
+                            <span className='font-bold text-warning'>GET UPTO</span>
+                            <p className='text-4xl font-bold text-red-500'> 33% OFF <br /> FOR ALL PRODUCTS</p> <br />
+                            <button className='btn btn-primary mt-5'>GET STARTED</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=A89D0DE6" alt="Burger" />
+                <div>
+                    <img src={slide3} alt='#' />
+                    <div className='absolute lg:top-40 lg:left-60 xs:hiden'>
+                        <div className='text-left'>
+                            <span className='font-bold text-warning'>GET UPTO</span>
+                            <p className='text-4xl font-bold text-red-500'> 33% OFF <br /> FOR ALL PRODUCTS</p> <br />
+                            <button className='btn btn-primary mt-5'>GET STARTED</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=225E6693" alt="Burger" />
-                </div>
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=9D9539E7" alt="Burger" />
-                </div>
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=BDC01094" alt="Burger" />
-                </div>
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/burger?w=400&h=300&hash=7F5AE56A" alt="Burger" />
-                </div>
-            </div>
-        </div>
+            </Carousel>
         </div>
     );
 };

@@ -126,9 +126,9 @@ const Purchase = () => {
                     <div className='my-3'>
                         <p className='w-96'>Description: {product.description}</p>
                     </div>
-                    <span className='text-5xl font-bold'>${product.price}</span>
+                    <span className='text-5xl font-bold my-3'>${product.price}</span>
                     <span>Stock: {product.stock}</span>
-                    <span>Ratings: {product.ratings}</span>
+                    <span>Ratings: {product.rating}</span>
                     <span className='text-opacity-5'>Min. Order (5 Pieces)</span>
                     <span>Max. Order (50 Pieces)</span>
                     <div className='flex items-center gap-2 my-5'>

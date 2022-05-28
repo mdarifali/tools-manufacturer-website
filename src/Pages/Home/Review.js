@@ -27,11 +27,11 @@ const Review = () => {
 
     return (
         <div className='card my-10'>
-            <p className='text-5xl text-center font-bold'>Clients Reviews</p>
+            <p className='text-5xl text-center font-bold'>What Our Customers Are Saying</p>
             <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 p-10'>
                 {
                     reviews.map(review =>
-                        <div key={review._id} class="card bg-base-100 shadow-xl">
+                        <div key={review._id} class="card bg-base-200 shadow-xl">
                             <div class="card-body flex justify-center items-center">
                                 <div class="avatar">
                                     <div class="w-24 rounded-full ring ring-warning ring-offset-base-100 ring-offset-2">

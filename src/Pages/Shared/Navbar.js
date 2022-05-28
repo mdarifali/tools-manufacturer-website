@@ -42,7 +42,7 @@ const NavBar = () => {
                         {navItems}
                     </ul>
                 </div>
-                <Link to='/home' class="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                <Link to='/home' class="btn btn-ghost normal-case text-xl">Brandix</Link>
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul class="menu menu-horizontal p-1 gap-1">

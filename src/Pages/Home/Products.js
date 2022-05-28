@@ -13,7 +13,7 @@ const Products = () => {
 
     return (
         <div className='my-10 p-10'>
-            <p className='text-5xl text-center font-bold'>Our Products {products.length}</p>
+            <p className='text-5xl text-center font-bold'>Auto Parts</p>
             <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 p-4'>
                 {
                     products.map(product => <ProductCard
