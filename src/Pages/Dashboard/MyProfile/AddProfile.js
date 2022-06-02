@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AddProfile = () => {
-    const hnadlProfile = event => {
 
+    const hnadlProfile = event => {
         event.preventDefault();
 
         const productsDetails = {
@@ -19,6 +19,7 @@ const AddProfile = () => {
         }
 
         fetch('https://radiant-plains-16562.herokuapp.com/profile', {
+            
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -100,10 +101,10 @@ const AddProfile = () => {
                                 />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">SUBMIT</button>
+                                <button className="btn btn-success">SUBMIT</button>
                             </div>
                             <div className="form-control mt-2">
-                                <Link to={`/dashboard/myprofile`}><button className="btn btn-primary">Go Profile Page</button></Link>
+                                <Link to={`/dashboard/myprofile`}><button className="btn btn-ghost">Go Profile Page</button></Link>
                             </div>
                         </div>
                     </form>

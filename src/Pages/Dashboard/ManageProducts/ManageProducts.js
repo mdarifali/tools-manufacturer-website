@@ -102,7 +102,11 @@ const ManageProducts = () => {
 
                         </tbody>
                         <tfoot>
-                            <tr>
+                            <tr><th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
                                 <th>SL</th>
                                 <th>Product Name</th>
                                 <th>Price</th>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
-    const { name, price, stock, img, rating } = product;
+    const { name, price, stock, img, rating, min, max } = product;
 
     return (
         <div>
@@ -13,6 +13,8 @@ const ProductCard = ({ product }) => {
                 <div className="card-body">
                     <h1 className="card-title">{name}</h1>
                     <p className='text-xl font-bold'>Price: ${price}</p>
+                    <p>Min. Order ({min} Pieces)</p>
+                    <p>Max. Order ({max} Pieces)</p>
                     <p>Stock: {stock}</p>
                     <span>Ratings: {rating}</span>
                     <Link to={`/purchase/${product._id}`} className="card-actions justify-end">

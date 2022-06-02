@@ -15,6 +15,7 @@ const Products = () => {
             setProducts(data)
             setLoading(false)
         });
+        
     }, [])
 
     return (
@@ -23,7 +24,7 @@ const Products = () => {
             {loading ? <Loading /> :
                 <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 p-4'>
                 {
-                    products.slice(0, 6).map(product => <ProductCard
+                    products.map(product => <ProductCard
                         key= {product._id}
                         product = {product}
                     />)

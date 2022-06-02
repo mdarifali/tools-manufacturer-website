@@ -18,6 +18,8 @@ const AddProduct = () => {
 
             name: event.target.name.value,
             price: event.target.price.value,
+            min: event.target.min.value,
+            max: event.target.max.value,
             stock: event.target.stock.value,
             rating: event.target.rating.value,
             img: event.target.img.value,
@@ -70,6 +72,22 @@ const AddProduct = () => {
                                         type="number"
                                         placeholder="Price"
                                         name='price'
+                                        required
+                                        className="input input-bordered input-success" />
+                                </div>
+                                <div className="form-control w-96">
+                                    <input
+                                        type="number"
+                                        placeholder="Min. Order"
+                                        name='min'
+                                        required
+                                        className="input input-bordered input-success" />
+                                </div>
+                                <div className="form-control w-96">
+                                    <input
+                                        type="number"
+                                        placeholder="Max. Order"
+                                        name='max'
                                         required
                                         className="input input-bordered input-success" />
                                 </div>

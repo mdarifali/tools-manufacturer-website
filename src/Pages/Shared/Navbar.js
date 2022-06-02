@@ -18,11 +18,10 @@ const NavBar = () => {
         <li><Link className="active" to='/'>Home</Link></li>
         <li className="hover-bordered"><Link to='/blogs'>Blogs</Link></li>
         <li className="hover-bordered"><Link to='/Portfolio'>My Portfolio</Link></li>
-
         {
             user ?
                 <>
-                    <li className="sm:hidden hover-bordered "><Link to="/dashboard">Dashboard</Link></li>
+                    <li className="hover-bordered "><Link to="/dashboard">Dashboard</Link></li>
                     <li>
                         <button onClick={logout} className='btn btn-outline btn-warning'>Sing Out</button>
                     </li>

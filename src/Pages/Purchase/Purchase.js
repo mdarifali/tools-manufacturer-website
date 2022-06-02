@@ -130,8 +130,8 @@ const Purchase = () => {
                     <span className='text-5xl font-bold my-3'>${product.price}</span>
                     <span>Stock: {product.stock}</span>
                     <span>Ratings: {product.rating}</span>
-                    <span className='text-opacity-5'>Min. Order (5 Pieces)</span>
-                    <span>Max. Order (50 Pieces)</span>
+                    <span className='text-opacity-5'>Min. Order ({product.min}Pieces)</span>
+                    <span>Max. Order ({product.max} Pieces)</span>
                     <div className='flex items-center gap-2 my-5'>
                         <button className="btn btn-success btn-outline btn-circle" onClick={handleIncrement}>
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 37 64">
@@ -150,10 +150,10 @@ const Purchase = () => {
                             </svg>
                         </button>
                         {
-                            quantity <= 4 && <span className='text-red-400'>min order 5 unit</span>
+                            product.min > quantity && <span className='text-red-400'>min order {product.min} unit</span>
                         }
                         {
-                            quantity >= 51 && <span className='text-red-400'>max order 50 unit</span>
+                            product.max < quantity && <span className='text-red-400'>max order {product.max} unit</span>
                         }
                         {
                             product.stock < quantity && <span className='text-red-400'>now available stock only {product.stock} !</span>
