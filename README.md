@@ -3,16 +3,13 @@
 Live Site Link: https://car-parts-manufacturers.web.app/
 Description:
 
-- Manage Inventory
-- Add Items
-- User Add Items Manage
-- User Login
-- google sing
-- Product Quantity Set
-- User Review add
-- Manage Products Orders
-- User Profile Add and Update
-- Payment getway
-- Admin Dashboard Panel
-- Server useing for Mongodb with Heroku
-- NodeJS with React
+-Project Summary: This Project is a fully functional and responsive wholesale online shopping 
+website that works front-end and back-end.
+-Client features: The client makes an order, changes order quantity, the client added profile & 
+update, manage orders, add a review, make payment with a credit card, and checks order status, client 
+dashboard and user login & signup with firebase.
+-Admin features: The Admin access his dashboard to manage, orders status, Remove existing 
+Products, Remove Unpaid User orders, Update Shipping Status, and Create New Admin.
+-Technology Used: React, React Router, React-Hook-Form, Node.js, Express.js, MongoDB, 
+Tailwind CSS, Stripe-Payment, Heroku, Firebase and JWT.
+
