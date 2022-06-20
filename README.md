@@ -17,5 +17,5 @@ Project Description:
 - Technology Used: React, React Router, React-Hook-Form, Node.js, Express.js, MongoDB, 
   Tailwind CSS, Stripe-Payment, Heroku, Firebase and JWT.
 
-Admin user: admin@gmail.com
-Admin pass: Admin@2022
+*Admin user: admin@gmail.com
+*Admin pass: Admin@2022
